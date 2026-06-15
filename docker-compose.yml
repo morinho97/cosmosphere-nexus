@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  # ── Frontend (production build served by Nginx) ──────────────────────────
+  frontend:
+    build:
+      context: .
+      target: production
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── Optional: TLE proxy backend (avoids CORS in production) ─────────────
+  # Uncomment if you self-host the TLE proxy
+  # backend:
+  #   image: node:20-alpine
+  #   working_dir: /app
+  #   volumes:
+  #     - ./server:/app
+  #   command: node index.js
+  #   ports:
+  #     - "3001:3001"
+  #   environment:
+  #     - PORT=3001
+  #     - CELESTRAK_BASE=https://celestrak.org
+  #   restart: unless-stopped
+
+networks:
+  default:
+    name: cosmosphere-network

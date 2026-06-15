@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Deep space background -->
+  <circle cx="32" cy="32" r="32" fill="#020408"/>
+
+  <!-- Outer atmosphere glow -->
+  <circle cx="32" cy="32" r="26" fill="none" stroke="#1a6bff" stroke-width="3" opacity="0.3"/>
+
+  <!-- Globe body -->
+  <circle cx="32" cy="32" r="22" fill="url(#earthGrad)"/>
+
+  <!-- Continent silhouettes (simplified) -->
+  <ellipse cx="26" cy="28" rx="7" ry="5" fill="#2d5a1b" opacity="0.9"/>
+  <ellipse cx="40" cy="24" rx="5" ry="4" fill="#2d5a1b" opacity="0.8"/>
+  <ellipse cx="34" cy="38" rx="6" ry="4" fill="#2d5a1b" opacity="0.7"/>
+
+  <!-- Polar ice cap -->
+  <ellipse cx="32" cy="12" rx="10" ry="4" fill="#e8f4fd" opacity="0.7"/>
+
+  <!-- Orbit ring 1 (tilted) -->
+  <ellipse cx="32" cy="32" rx="30" ry="10"
+    fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.5"
+    transform="rotate(-20 32 32)"/>
+
+  <!-- Orbit ring 2 (steeper) -->
+  <ellipse cx="32" cy="32" rx="28" ry="6"
+    fill="none" stroke="#00D4FF" stroke-width="0.8" opacity="0.3"
+    transform="rotate(45 32 32)"/>
+
+  <!-- Satellite dot on orbit 1 -->
+  <circle cx="56" cy="27" r="2.5" fill="#00D4FF"/>
+  <circle cx="56" cy="27" r="4" fill="none" stroke="#00D4FF" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- ISS dot on orbit 2 -->
+  <circle cx="14" cy="38" r="2" fill="#FFD700"/>
+
+  <!-- Atmosphere haze -->
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#4080ff" stroke-width="4" opacity="0.15"/>
+
+  <defs>
+    <radialGradient id="earthGrad" cx="40%" cy="35%">
+      <stop offset="0%"   stop-color="#1a4070"/>
+      <stop offset="50%"  stop-color="#0a2850"/>
+      <stop offset="100%" stop-color="#020a18"/>
+    </radialGradient>
+  </defs>
+</svg>

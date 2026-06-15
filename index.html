@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Cosmosphere Nexus — Interactive Orbital Intelligence Platform" />
+    <title>Cosmosphere Nexus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+    <!-- globe.gl — all helper functions defined BEFORE the script tag that calls them -->
+    <script>
+      window.__globeGLReady = false;
+      window.__globeGLCallbacks = [];
+      window.__onGlobeGLReady = function(cb) {
+        if (window.__globeGLReady) { cb(); } else { window.__globeGLCallbacks.push(cb); }
+      };
+      window.__markGlobeReady = function() {
+        if (window.__globeGLReady) return;
+        window.__globeGLReady = true;
+        (window.__globeGLCallbacks || []).forEach(function(cb){ try{ cb(); } catch(e){} });
+        window.__globeGLCallbacks = [];
+      };
+      window.__loadGlobeGLFallback = function() {
+        console.warn('[Cosmosphere] unpkg failed, trying jsdelivr CDN');
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/globe.gl@2.28.0/dist/globe.gl.min.js';
+        s.onload = window.__markGlobeReady;
+        s.onerror = function() { console.error('[Cosmosphere] Both CDNs failed to load globe.gl'); };
+        document.head.appendChild(s);
+      };
+    </script>
+    <script
+      src="https://unpkg.com/globe.gl@2.28.0/dist/globe.gl.min.js"
+      onload="window.__markGlobeReady()"
+      onerror="window.__loadGlobeGLFallback()">
+    </script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { background: #020408; overflow: hidden; width: 100vw; height: 100vh; }
+      #root { width: 100%; height: 100%; position: relative; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
